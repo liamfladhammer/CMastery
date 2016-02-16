@@ -1,0 +1,6 @@
+GETTING THE JSON TO WORK
+
+1. Download the .jar file from 
+https://jsonp.java.net/download.html
+2. Rename the file to json.jar
+3. Place json.jar into your /lib folder
