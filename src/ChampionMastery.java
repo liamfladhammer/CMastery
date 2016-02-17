@@ -5,6 +5,7 @@ import java.net.*;
 import java.util.Scanner;
 import javax.json.*;
 
+//~try and catch errors
 public class ChampionMastery{
 	
 	static String platformID="NA1";
@@ -43,7 +44,7 @@ public class ChampionMastery{
 			+"?api_key="
 			+apiKey;
 
-		InputStream is=new URL(s).openStream(); //~catch error and return SUMMONER NAME NOT FOUND
+		InputStream is=new URL(s).openStream(); 
 		BufferedReader br=new BufferedReader(new InputStreamReader(is));
 		String str="";
 		while(br.ready())
