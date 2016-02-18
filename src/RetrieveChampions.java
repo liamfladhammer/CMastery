@@ -9,7 +9,7 @@ import javax.json.*;
 public class RetrieveChampions{
 		
 	static String apiKey="0c0cba27-7323-4093-90fa-6ead6333538b";
-	static String version="6.3.1";
+	static String version;
 	
 	public static void main(String []args) throws MalformedURLException, IOException{
 		getChampionData();

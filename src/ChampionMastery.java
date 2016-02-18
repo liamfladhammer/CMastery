@@ -8,11 +8,14 @@ import javax.json.*;
 //~try and catch errors
 public class ChampionMastery{
 	
+	static String apiKey=C.apiKey();
 	static String platformID="NA1";
-	static String apiKey="0c0cba27-7323-4093-90fa-6ead6333538b"; 
 
 	public static void main(String []args) throws MalformedURLException, IOException{	
-		getMastery(getInput("Summoner Name"));
+		Scanner scan=new Scanner(System.in);
+		System.out.println("Enter Summoner Name");
+		String str = scan.nextLine().replace(" ", "");
+		getMastery(str);
 		System.out.println("CHAMPIONMASTERY COMPLETED");
 	}
 	  
@@ -52,12 +55,5 @@ public class ChampionMastery{
 		JsonReader jr = Json.createReader(new StringReader(str));
 		JsonObject jobj = jr.readObject();
 		return jobj.getJsonObject(summName.toLowerCase()).getJsonNumber("id").longValue();
-	}
-
-	//Gets a string input after prompting based off string
-	public static String getInput(String prompt){
-		Scanner scan=new Scanner(System.in);
-		System.out.println("Enter "+prompt);
-		return scan.nextLine();
 	}
 }
