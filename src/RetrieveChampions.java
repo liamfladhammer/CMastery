@@ -54,10 +54,11 @@ public class RetrieveChampions{
 				while((length=is.read(b)) != -1) {
 	    			os.write(b, 0, length);
 				}			
-				System.out.println(name+".png DOWNLOADED");
+			//	System.out.println(name+".png DOWNLOADED");
 			}
-			else
-				System.out.println(name+".png ALREADY EXISTS");
+			else{
+			//	System.out.println(name+".png ALREADY EXISTS");
+			}
 		}
 	}
 }
