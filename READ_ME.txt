@@ -39,6 +39,12 @@ java -cp .:lib/json.jar src.ChampionMastery
 javac -cp .:lib/json.jar src/RetrieveChampions.java
 java -cp .:lib/json.jar src.RetrieveChampions
 
+javac -cp .:lib/json.jar src/C.java
+java -cp .:lib/json.jar src.C
+
+javac -cp .:lib/json.jar src/PlayerMastered.java
+java -cp .:lib/json.jar src.PlayerMastered
+
 
 FINAL NOTES:
 cmd/ctrl + f to "~" to find places in code that need to be fixed or created
