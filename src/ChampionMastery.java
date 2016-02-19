@@ -37,7 +37,7 @@ public class ChampionMastery{
 		while((length=is.read(b)) != -1) {
     		os.write(b, 0, length);
 		}	
-		System.out.println(summName+"_mastery.json CREATED");
+		//System.out.println(summName+"_mastery.json CREATED");
 	}
 	
 	//Gets a summonerId that matches the summName

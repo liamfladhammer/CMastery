@@ -32,6 +32,8 @@ java -cp src;lib/json.jar RetrieveChampions
 javac -cp lib/json.jar src/ChampionMastery.java
 java -cp src;lib/json.jar ChampionMastery
 
+
+
 MAC:
 javac -cp .:lib/json.jar src/ChampionMastery.java
 java -cp .:lib/json.jar src.ChampionMastery
@@ -40,10 +42,10 @@ javac -cp .:lib/json.jar src/RetrieveChampions.java
 java -cp .:lib/json.jar src.RetrieveChampions
 
 javac -cp .:lib/json.jar src/C.java
-java -cp .:lib/json.jar src.C
 
 javac -cp .:lib/json.jar src/PlayerMastered.java
 java -cp .:lib/json.jar src.PlayerMastered
+
 
 
 FINAL NOTES:

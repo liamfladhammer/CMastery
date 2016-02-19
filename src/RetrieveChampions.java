@@ -28,7 +28,7 @@ public class RetrieveChampions{
 		while((length=is.read(b)) != -1) {
 			os.write(b, 0, length);
 		}	
-		System.out.println("data/championData.json CREATED");
+		//System.out.println("data/championData.json CREATED");
 	}
 
 	//Downloads all images for the champions based off of the championData.json file
@@ -57,7 +57,7 @@ public class RetrieveChampions{
 				System.out.println(name+".png DOWNLOADED");
 			}
 			else{
-				System.out.println(name+".png ALREADY EXISTS");
+				//System.out.println(name+".png ALREADY EXISTS");
 			}
 		}
 	}

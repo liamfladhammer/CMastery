@@ -22,15 +22,20 @@ public class PlayerMastered{
 		jr = Json.createReader(new FileReader("data/"+player.replace(" ", "")+"_mastery.json"));
 		JsonArray playerMastery = jr.readArray();
 
-		System.out.println(player+" Champion Mastery");
+		String f = "data/"+player.replace(" ", "").toLowerCase()+"_simplemastery.txt";
+		BufferedWriter bw=new BufferedWriter(new FileWriter(f));
 		for(int i=0; i<playerMastery.size(); i++){		
 			JsonObject champ = playerMastery.getJsonObject(i);
-			String mChampion = ""+champ.getJsonNumber("championId").longValue(); //champion id to name
-			String mPoints = ""+champ.getJsonNumber("championPoints").longValue();
-			String mLevel = ""+champ.getJsonNumber("championLevel").intValue();
-			System.out.println(mChampion+"\tPoints: "+mPoints+"\tLevel: "+mLevel);
+			int mLevel = +champ.getJsonNumber("championLevel").intValue();
+			if(mLevel>=4){
+				String mChampion = C.getChampionName(champ.getJsonNumber("championId").intValue()); 
+				long mPoints = champ.getJsonNumber("championPoints").longValue();
+				
+				bw.write(mChampion+"  "+mPoints+"  "+mLevel);
+				bw.newLine();
+			}
 		}
+		bw.flush();
 	}
 }
 
-//https://developer.riotgames.com/api/methods#!/1055/3622
