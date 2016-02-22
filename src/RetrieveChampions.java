@@ -5,6 +5,7 @@ import java.net.*;
 import java.util.Iterator;
 import javax.json.*;
 
+//STATIC API
 //~try and catch errors
 public class RetrieveChampions{
 		

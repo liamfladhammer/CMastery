@@ -5,6 +5,7 @@ import java.net.*;
 import java.util.Scanner;
 import javax.json.*;
 
+//CHAMPION MASTERY
 //~try and catch errors
 public class ChampionMastery{
 	
@@ -21,8 +22,8 @@ public class ChampionMastery{
 	  
 	//Gets all the champions with mastery for a specific player
 	public static void getMastery(String summName) throws MalformedURLException, IOException{
-		long summId = getSummonerId(summName);
-		new File("data").mkdirs(); //makes the data folder if it doesn't exist
+		long summId = C.getSummonerId(summName);
+		new File("data/player").mkdirs(); //makes the data folder if it doesn't exist
 		String url="https://na.api.pvp.net/championmastery/location/"
 			+ platformID
 			+ "/player/"
@@ -31,30 +32,12 @@ public class ChampionMastery{
 			+ apiKey;
 
 		InputStream is=new URL(url).openStream();
-		OutputStream os=new FileOutputStream("data/"+summName+"_mastery.json");
+		OutputStream os=new FileOutputStream("data/player/"+summName+".json");
 		byte[] b = new byte[2048];
 		int length;
 		while((length=is.read(b)) != -1) {
     		os.write(b, 0, length);
 		}	
 		//System.out.println(summName+"_mastery.json CREATED");
-	}
-	
-	//Gets a summonerId that matches the summName
-	//~Put this method in C
-	public static long getSummonerId(String summName) throws MalformedURLException, IOException{
-		String s="https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/"
-			+summName
-			+"?api_key="
-			+apiKey;
-
-		InputStream is=new URL(s).openStream(); 
-		BufferedReader br=new BufferedReader(new InputStreamReader(is));
-		String str="";
-		while(br.ready())
-			str+=br.readLine();
-		JsonReader jr = Json.createReader(new StringReader(str));
-		JsonObject jobj = jr.readObject();
-		return jobj.getJsonObject(summName.toLowerCase()).getJsonNumber("id").longValue();
 	}
 }

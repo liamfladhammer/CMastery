@@ -1,4 +1,4 @@
-READ_ME
+﻿READ_ME
 CREATED BY Liam Fladhammer
 github.com/liamfladhammer
 
@@ -26,13 +26,15 @@ EASY ACCESS USING THE COMMAND PROMPT:
 Navigate using cd and ls(mac, linux) or dir(windows) to get to your project folder
 
 WINDOWS:
-javac -cp lib/json.jar src/RetrieveChampions.java
-java -cp src;lib/json.jar RetrieveChampions
+javac -cp .;lib/json.jar src/C.java
+javac -cp .;lib/json.jar src/RetrieveChampions.java
+javac -cp .;lib/json.jar src/ChampionMastery.java
+javac -cp .;lib/json.jar src/PlayerMastered.java
 
-javac -cp lib/json.jar src/ChampionMastery.java
-java -cp src;lib/json.jar ChampionMastery
+java -cp .;lib/json.jar src.PlayerMastered
 
-
+java -cp .;lib/json.jar src.RetrieveChampions
+java -cp .;lib/json.jar src.ChampionMastery
 
 MAC:
 javac -cp .:lib/json.jar src/ChampionMastery.java
