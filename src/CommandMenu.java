@@ -34,13 +34,13 @@ public class CommandMenu{
 		Scanner scan = new Scanner(System.in);
 		String option=scan.next();
 
-		if(option.contains("5")){
+		if(option.equals("5")){
 			quit=true;
 		}
-		else if(option.contains("2")){
+		else if(option.equals("2")){
 			ChangeVariables();
 		}
-		else if(option.contains("1")){
+		else if(option.equals("1")){
 			Run();
 		}
 		else{
@@ -51,22 +51,22 @@ public class CommandMenu{
 	public void ChangeVariables() throws MalformedURLException, IOException{
 		System.out.println();
 		System.out.println("/1/  Set Region ["+ApiElement.region()+"]");
-		System.out.println("/2/  Set Api Key ["+ApiElement.apiKey()+"]");
+		System.out.println("/2/  Set Api Key ["+ApiElement.previewKey()+"....]");
 		System.out.println("/5/  Exit Variable Menu");
 		System.out.print("/");
 
 		Scanner scan = new Scanner(System.in);
 		String option=scan.next();
 		
-		if(option.contains("")){
+		if(option.equals("5")){
 		}
-		else if(option.contains("1")){
+		else if(option.equals("1")){
 			System.out.println("\nEnter a valid region");
 			String region=scan.next();
 			ApiElement.apiKey(region);
 			//print out if a valid region or not
 		}
-		else if(option.contains("2")){
+		else if(option.equals("2")){
 			System.out.println("\nEnter a valid api key");
 			String key=scan.next();
 			ApiElement.apiKey(key);

@@ -14,6 +14,11 @@ public abstract class ApiElement{
 		return apiKey;
 	}
 
+	public static String previewKey(){
+		String s[] = apiKey.split("-");
+		return s[0];
+	}
+
 	public static void region(String reg){
 		region=reg;
 	}
