@@ -8,25 +8,11 @@ TO DO LIST
 --------------------------------------
   PRIORITY 2: things I plan on doing
 --------------------------------------
-+Create a java program that is run in cmd, can look like the below:
-
-"WELCOME TO THE PLAYER MASTERY"
-
-1. Change Summoner Name [summName] [(takes in an input of summoner name and returns a list of their mastery)
-2. Change Region [region] (changes region and displays that in brackets)
-3. Dump Champions Mastered
-4. Exit Program
-
-secret (input of 5 will display credits)
-default summoner name will be Felfire and region will be NA
-
-+Make the class names more descriptive of what they do
-rename RetrieveChampions to be ChampionData
-rename ChampionMastery to be CMasteryData
-rename C to be SummonerData
-rename PlayerMastered to ??? (this is the main runner)
-
++catch all potential errors
++improve the run so you can get specific data like for a specific champion or total score
++isReady method in the ApiElement abstract class
++Reorganize .java and .class files into packages and bin
 -----------------------------------------
   PRIORITY 3: things that would be nice
 -----------------------------------------
-+Create a JSONViewer that formats and displays the JSON files
++Create my own JSON library

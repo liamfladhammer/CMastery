@@ -7,9 +7,8 @@ import javax.json.*;
 
 //STATIC API
 //~try and catch errors
-public class RetrieveChampions{
+public class StaticData extends ApiElement{
 		
-	static String apiKey=C.apiKey();
 	static String version;
 	
 	public static void main(String []args) throws MalformedURLException, IOException{
@@ -62,4 +61,16 @@ public class RetrieveChampions{
 			}
 		}
 	}
+
+	public static String getChampionName(int championId) throws IOException{
+		JsonReader jr = Json.createReader(new FileReader("data/championData.json"));
+		JsonObject data = jr.readObject().getJsonObject("data");
+		Iterator<String> keys = data.keySet().iterator();
+		while(keys.hasNext()){
+			JsonObject c = data.getJsonObject(keys.next());
+			if(c.getInt("id")==championId)
+				return c.getString("name");
+		}
+		return "invalid id";
+	}	
 }

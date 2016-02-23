@@ -13,11 +13,6 @@ https://jsonp.java.net/download.html
 rename the jar file to json.jar for easy running of the program and put it in your /lib folder
 
 
-CLASS OVERVIEW:
-*ChampionMastery will prompt for a summoner name, and create a .json file of the players mastery
-*RetrieveChampions accesses the static api to receive data, championData.txt contains all the champions and their id, and the data/img folder contains all the champions square icons
-
-
 FULL API REFERENCE:
 https://developer.riotgames.com/api/methods
 
@@ -26,15 +21,15 @@ EASY ACCESS USING THE COMMAND PROMPT:
 Navigate using cd and ls(mac, linux) or dir(windows) to get to your project folder
 
 WINDOWS:
-javac -cp .;lib/json.jar src/C.java
-javac -cp .;lib/json.jar src/RetrieveChampions.java
-javac -cp .;lib/json.jar src/ChampionMastery.java
-javac -cp .;lib/json.jar src/PlayerMastered.java
+javac -cp .;lib/json.jar src/ApiElement.java
+javac -cp .;lib/json.jar src/SummonerData.java
+javac -cp .;lib/json.jar src/StaticData.java
+javac -cp .;lib/json.jar src/CMasteryData.java
+javac -cp .;lib/json.jar src/CommandMenu.java
 
-java -cp .;lib/json.jar src.PlayerMastered
+java -cp .;lib/json.jar src.CommandMenu
 
-java -cp .;lib/json.jar src.RetrieveChampions
-java -cp .;lib/json.jar src.ChampionMastery
+
 
 MAC:
 javac -cp .:lib/json.jar src/ChampionMastery.java
@@ -47,8 +42,3 @@ javac -cp .:lib/json.jar src/C.java
 
 javac -cp .:lib/json.jar src/PlayerMastered.java
 java -cp .:lib/json.jar src.PlayerMastered
-
-
-
-FINAL NOTES:
-cmd/ctrl + f to "~" to find places in code that need to be fixed or created

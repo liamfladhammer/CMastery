@@ -5,11 +5,10 @@ import java.net.*;
 import java.util.Scanner;
 import javax.json.*;
 
-//CHAMPION MASTERY
+//CHAMPION MASTERY API
 //~try and catch errors
-public class ChampionMastery{
+public class CMasteryData extends ApiElement{
 	
-	static String apiKey=C.apiKey();
 	static String platformID="NA1";
 
 	public static void main(String []args) throws MalformedURLException, IOException{	
@@ -22,7 +21,7 @@ public class ChampionMastery{
 	  
 	//Gets all the champions with mastery for a specific player
 	public static void getMastery(String summName) throws MalformedURLException, IOException{
-		long summId = C.getSummonerId(summName);
+		long summId = SummonerData.getSummonerId(summName);
 		new File("data/player").mkdirs(); //makes the data folder if it doesn't exist
 		String url="https://na.api.pvp.net/championmastery/location/"
 			+ platformID
