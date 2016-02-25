@@ -37,6 +37,5 @@ public class CMasteryData extends ApiElement{
 		while((length=is.read(b)) != -1) {
     		os.write(b, 0, length);
 		}	
-		//System.out.println(summName+"_mastery.json CREATED");
 	}
 }

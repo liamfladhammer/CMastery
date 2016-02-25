@@ -8,6 +8,7 @@ import javax.json.*;
 public class CommandMenu{
 	
 	private boolean quit;
+	private String summoner;
 
 	public CommandMenu(){
 		quit=false;
@@ -24,8 +25,13 @@ public class CommandMenu{
 		}
 	}
 
+	public boolean quit(){
+		return quit;
+	}
+
 	public void MainMenu() throws MalformedURLException, IOException{
 		System.out.println();
+		System.out.println("Main Menu");
 		System.out.println("/1/  Run");
 		System.out.println("/2/  Set Variables");
 		System.out.println("/5/  Quit");
@@ -42,6 +48,7 @@ public class CommandMenu{
 		}
 		else if(option.equals("1")){
 			Run();
+			DataMenu();
 		}
 		else{
 			System.out.println("Bad Input");
@@ -50,6 +57,7 @@ public class CommandMenu{
 
 	public void ChangeVariables() throws MalformedURLException, IOException{
 		System.out.println();
+		System.out.println("Main Menu > Set Variables");
 		System.out.println("/1/  Set Region ["+ApiElement.region()+"]");
 		System.out.println("/2/  Set Api Key ["+ApiElement.previewKey()+"....]");
 		System.out.println("/5/  Exit Variable Menu");
@@ -59,18 +67,21 @@ public class CommandMenu{
 		String option=scan.next();
 		
 		if(option.equals("5")){
+			MainMenu();
 		}
 		else if(option.equals("1")){
 			System.out.println("\nEnter a valid region");
 			String region=scan.next();
-			ApiElement.apiKey(region);
+			ApiElement.region(region);
 			//print out if a valid region or not
+			ChangeVariables();
 		}
 		else if(option.equals("2")){
 			System.out.println("\nEnter a valid api key");
 			String key=scan.next();
 			ApiElement.apiKey(key);
 			//print out if this is a valid api key or not
+			ChangeVariables();
 		}
 		else{
 			System.out.println("Bad Input");
@@ -79,33 +90,103 @@ public class CommandMenu{
 	}
 
 	public void Run() throws MalformedURLException, IOException{
-		System.out.println("Gathering Data...");
+		System.out.println("\nGathering Data...");
 		StaticData.getChampionData();
 		StaticData.getChampionImages();
 		Scanner scan=new Scanner(System.in);
 		
 		System.out.println("\nEnter Summoner Name");
-		String player = scan.nextLine();
-		CMasteryData.getMastery(player.replace(" ", ""));
+		summoner = scan.nextLine();
+		CMasteryData.getMastery(summoner.replace(" ", ""));
+	}
 
+	//the data menu used after the run
+	public void DataMenu() throws MalformedURLException, IOException{
+		System.out.println();
+		System.out.println("Main Menu > Run ");
+		System.out.println("/1/  Search Champion");
+		System.out.println("/2/  Total Mastery Score");
+		System.out.println("/3/  Dump Data");
+		System.out.println("/5/  Exit Run Menu");
+		System.out.print("/");
+
+		Scanner scan = new Scanner(System.in);
+		String option=scan.next();
+		
+		if(option.equals("5")){
+			MainMenu();
+		}
+		else if(option.equals("1")){
+			System.out.println("\nEnter a valid champion name");
+			String champ=scan.next();
+			//MasteryFor(champion);
+			DataMenu();
+			
+		}
+		else if(option.equals("2")){
+			System.out.print("\nTotal Mastery Score:  ");
+			//TotalMasteryScore();
+			System.out.println();
+			DataMenu();
+		}
+		else if(option.equals("3")){
+			DumpMenu();
+		}
+		else{
+			System.out.println("Bad Input");
+			DataMenu();
+		}
+	}
+
+	public void DumpMenu() throws MalformedURLException, IOException{
+		System.out.println();
+		System.out.println("Main Menu > Run > Dump Data");
+		System.out.println("/1/  Dump by Champion Name");
+		System.out.println("/2/  Dump by Mastery Points");
+		System.out.println("/5/  Back");
+		System.out.print("/");
+
+		Scanner scan = new Scanner(System.in);
+		String option=scan.next();
+		
+		if(option.equals("5")){
+			DataMenu();
+		}
+		else if(option.equals("1")){
+			System.out.println("\nDumping Data... by Champion Name");
+			DumpDataByChampion();
+			DumpMenu();
+			
+		}
+		else if(option.equals("2")){
+			System.out.println("\nDumping Data... by Mastery Points");
+			DumpDataByPoints();
+			DumpMenu();
+		}
+		else{
+			System.out.println("Bad Input");
+			DumpMenu();
+		}
+	}
+
+	public void DumpDataByChampion() throws MalformedURLException, IOException{
+		// look below, however need to sort it somehow
+	}
+
+	public void DumpDataByPoints() throws MalformedURLException, IOException{
 		JsonReader jr = Json.createReader(new FileReader("data/championData.json"));
 		JsonObject data = jr.readObject().getJsonObject("data");
 
-		jr = Json.createReader(new FileReader("data/player/"+player.replace(" ", "")+".json"));
+		jr = Json.createReader(new FileReader("data/player/"+summoner.replace(" ", "")+".json"));
 		JsonArray playerMastery = jr.readArray();
 
 		for(int i=0; i<playerMastery.size(); i++){		
 			JsonObject champ = playerMastery.getJsonObject(i);
-			int mLevel = +champ.getJsonNumber("championLevel").intValue();
 			String mChampion = StaticData.getChampionName(champ.getJsonNumber("championId").intValue()); 
 			long mPoints = champ.getJsonNumber("championPoints").longValue();
 			
-			System.out.println( mChampion +"  Level: "+ mLevel +"  Points: "+ mPoints);
+			System.out.println(mPoints+ "  -  "+ mChampion);
 		}
-	}
-
-	public boolean quit(){
-		return quit;
 	}
 }
 
