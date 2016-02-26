@@ -1,0 +1,27 @@
+h2{
+    font-family: Verdana, Geneva, sans-serif;
+}
+p{ 
+    font-family: Verdana, Geneva, sans-serif;
+}
+#header {
+    background-color:#DDEEFF;
+    color:black;
+    text-align:center;
+    position: fixed;
+    width:350px;
+    margin-top:0px;
+    margin-left:5%;
+}
+
+#section {
+    width:350px;
+    align:left; 
+}
+#footer {
+    background-color:black;
+    color:white;
+    float:center;
+    text-indent:25px;
+    padding:3px; 
+}
